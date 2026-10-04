@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐹 歡樂打地鼠</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="game-container">
+
+        <!-- 標題與計分區 -->
+        <header class="game-header">
+            <div class="title-area">
+                <div class="title-icon">🐹</div>
+                <div>
+                    <h1>歡樂打地鼠</h1>
+                    <p>抓住偷偷冒出來的小地鼠！</p>
+                </div>
+            </div>
+
+            <!-- 遊戲資訊 -->
+            <div class="score-board">
+                <div class="score-box">
+                    <span class="label">分數</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="score-box">
+                    <span class="label">Combo</span>
+                    <span id="combo">0</span>
+                </div>
+                <div class="score-box timer-box">
+                    <span class="label">時間</span>
+                    <span id="time">60</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 遊戲區 -->
+        <main class="game-board">
+            <!-- 裝飾雲朵與草地 -->
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="grass"></div>
+
+            <!-- 洞穴區 -->
+            <div class="holes-container">
+                <!-- 9 個地鼠洞 -->
+                <div class="hole" data-index="0">
+                    <div class="mole">
+                        <div class="mole-face">
+                            <div class="ear left-ear"></div>
+                            <div class="ear right-ear"></div>
+                            <div class="eye left-eye"></div>
+                            <div class="eye right-eye"></div>
+                            <div class="nose"></div>
+                            <div class="mouth"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hole" data-index="1">
+                    <div class="mole">
+                        <div class="mole-face">
+                            <div class="ear left-ear"></div>
+                            <div class="ear right-ear"></div>
+                            <div class="eye left-eye"></div>
+                            <div class="eye right-eye"></div>
+                            <div class="nose"></div>
+                            <div class="mouth"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hole" data-index="2">
+                    <div class="mole">
+                        <div class="mole-face">
+                            <div class="ear left-ear"></div>
+                            <div class="ear right-ear"></div>
+                            <div class="eye left-eye"></div>
+                            <div class="eye right-eye"></div>
+                            <div class="nose"></div>
+                            <div class="mouth"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hole" data-index="3">
+                    <div class="mole">
+                        <div class="mole-face">
+                            <div class="ear left-ear"></div>
+                            <div class="ear right-ear"></div>
+                            <div class="eye left-eye"></div>
+                            <div class="eye right-eye"></div>
+                            <div class="nose"></div>
+                            <div class="mouth"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hole" data-index="4">
+                    <div class="mole">
+                        <div class="mole-face">
+                            <div class="ear left-ear"></div>
+                            <div class="ear right-ear"></div>
+                            <div class="eye left-eye"></div>
+                            <div class="eye right-eye"></div>
+                            <div class="nose"></div>
+                            <div class="mouth"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hole" data-index="5">
+                    <div class="mole">
+                        <div class="mole-face">
+                            <div class="ear left-ear"></div>
+                            <div class="ear right-ear"></div>
+                            <div class="eye left-eye"></div>
+                            <div class="eye right-eye"></div>
+                            <div class="nose"></div>
+                            <div class="mouth"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hole" data-index="6">
+                    <div class="mole">
+                        <div class="mole-face">
+                            <div class="ear left-ear"></div>
+                            <div class="ear right-ear"></div>
+                            <div class="eye left-eye"></div>
+                            <div class="eye right-eye"></div>
+                            <div class="nose"></div>
+                            <div class="mouth"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hole" data-index="7">
+                    <div class="mole">
+                        <div class="mole-face">
+                            <div class="ear left-ear"></div>
+                            <div class="ear right-ear"></div>
+                            <div class="eye left-eye"></div>
+                            <div class="eye right-eye"></div>
+                            <div class="nose"></div>
+                            <div class="mouth"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hole" data-index="8">
+                    <div class="mole">
+                        <div class="mole-face">
+                            <div class="ear left-ear"></div>
+                            <div class="ear right-ear"></div>
+                            <div class="eye left-eye"></div>
+                            <div class="eye right-eye"></div>
+                            <div class="nose"></div>
+                            <div class="mouth"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 反饋提示字浮動區域 -->
+            <div id="feedback" class="feedback"></div>
+        </main>
+
+        <!-- 控制區 -->
+        <section class="controls">
+            <button id="startButton" class="start-button">
+                🎮 開始遊戲
+            </button>
+            <div class="best-score">
+                🏆 最高分：<strong id="bestScore">0</strong>
+            </div>
+        </section>
+
+        <!-- 遊戲結束彈窗 -->
+        <div id="gameOver" class="game-over">
+            <div class="game-over-card">
+                <div class="big-mole">🐹</div>
+                <h2>遊戲結束！</h2>
+                <p>你的分數</p>
+                <div id="finalScore" class="final-score">0</div>
+                <p id="resultMessage" class="result-message">再玩一次吧！</p>
+                <button id="restartButton" class="restart-button">
+                    🔄 再玩一次
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
