@@ -1,0 +1,359 @@
+/* 全局樣式重置與設定 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* 主遊戲容器 */
+.game-container {
+    background: #87CEEB;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    border: 6px solid #5d4037;
+}
+
+/* 頂部標題與分數欄 */
+.game-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 16px;
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+    margin-bottom: 20px;
+    gap: 12px;
+}
+
+.title-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.title-icon {
+    font-size: 2.2rem;
+}
+
+.title-area h1 {
+    font-size: 1.4rem;
+    color: #3e2723;
+}
+
+.title-area p {
+    font-size: 0.85rem;
+    color: #6d4c41;
+}
+
+/* 記分板 */
+.score-board {
+    display: flex;
+    gap: 12px;
+}
+
+.score-box {
+    background: #fff3e0;
+    border: 2px solid #ffe0b2;
+    padding: 6px 12px;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 65px;
+}
+
+.score-box .label {
+    display: block;
+    font-size: 0.75rem;
+    color: #e65100;
+    font-weight: bold;
+}
+
+.score-box span:not(.label) {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #bf360c;
+}
+
+.timer-box {
+    background: #ffebee;
+    border-color: #ffcdd2;
+}
+
+.timer-box .label {
+    color: #c62828;
+}
+
+.timer-box #time {
+    color: #d32f2f;
+}
+
+/* 遊戲畫板與場景 */
+.game-board {
+    background: linear-gradient(to bottom, #87CEEB 60%, #e0c097 60%);
+    border-radius: 16px;
+    padding: 20px 10px;
+    position: relative;
+    border: 4px solid #4e342e;
+}
+
+/* 背景裝飾：雲朵 */
+.cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    opacity: 0.8;
+}
+
+.cloud-1 {
+    width: 80px;
+    height: 30px;
+    top: 15px;
+    left: 20px;
+}
+
+.cloud-2 {
+    width: 60px;
+    height: 24px;
+    top: 30px;
+    right: 30px;
+}
+
+/* 洞穴九宮格網格 */
+.holes-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    position: relative;
+    z-index: 2;
+    margin-top: 10px;
+}
+
+.hole {
+    aspect-ratio: 1;
+    background: #4e342e;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 10px 15px rgba(0, 0, 0, 0.6), 0 4px 0 #3e2723;
+    cursor: pointer;
+}
+
+.hole::after {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    background: #8d6e63;
+    border-radius: 50%;
+    z-index: 3;
+}
+
+/* 地鼠本體結構與動畫 */
+.mole {
+    width: 75%;
+    height: 80%;
+    background: #8d5b4c;
+    border-radius: 50% 50% 20% 20%;
+    position: absolute;
+    bottom: -80%;
+    left: 12.5%;
+    transition: bottom 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 2;
+}
+
+.hole.active .mole {
+    bottom: 12%;
+}
+
+.hole.hit .mole {
+    bottom: -80% !important;
+    transition: bottom 0.15s ease-in;
+}
+
+/* 地鼠五官樣式 */
+.mole-face {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.ear {
+    width: 18px;
+    height: 18px;
+    background: #6d4236;
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+}
+
+.left-ear { left: 4px; }
+.right-ear { right: 4px; }
+
+.eye {
+    width: 10px;
+    height: 10px;
+    background: #000;
+    border-radius: 50%;
+    position: absolute;
+    top: 25px;
+}
+
+.left-eye { left: 22%; }
+.right-eye { right: 22%; }
+
+.nose {
+    width: 14px;
+    height: 10px;
+    background: #ff8a80;
+    border-radius: 50%;
+    position: absolute;
+    top: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mouth {
+    width: 16px;
+    height: 8px;
+    border-bottom: 3px solid #3e2723;
+    border-radius: 0 0 50% 50%;
+    position: absolute;
+    top: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 反饋文字浮動打擊動畫 */
+.feedback {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #ffeb3b;
+    text-shadow: 0 0 8px rgba(0,0,0,0.8), 2px 2px 0 #000;
+    pointer-events: none;
+    z-index: 10;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+    opacity: 0;
+}
+
+.feedback.show {
+    transform: translate(-50%, -80%) scale(1.2);
+    opacity: 1;
+}
+
+/* 底部控制區域 */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.start-button, .restart-button {
+    background: linear-gradient(to bottom, #ff9800, #f57c00);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #e65100;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.start-button:active, .restart-button:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #e65100;
+}
+
+.start-button:disabled {
+    background: #bdbdbd;
+    box-shadow: 0 4px 0 #757575;
+    cursor: not-allowed;
+}
+
+.best-score {
+    font-size: 1rem;
+    color: #3e2723;
+    font-weight: bold;
+}
+
+/* 遊戲結束彈窗 Overlay */
+.game-over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 20;
+    border-radius: 18px;
+}
+
+.game-over.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.game-over-card {
+    background: white;
+    padding: 28px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 80%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    from { transform: scale(0.7); }
+    to { transform: scale(1); }
+}
+
+.big-mole {
+    font-size: 3.5rem;
+    margin-bottom: 8px;
+}
+
+.final-score {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #e65100;
+    margin: 10px 0;
+}
+
+.result-message {
+    color: #5d4037;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
