@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>花園打地鼠</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="game">
+    <header class="game-header">
+      <h1>🌼 花園打地鼠 🌼</h1>
+      <p>快來抓住調皮的小地鼠！</p>
+    </header>
+
+    <section class="scoreboard" aria-label="遊戲資訊">
+      <div class="score-card">
+        <span>分數</span>
+        <strong id="score">0</strong>
+      </div>
+      <div class="score-card">
+        <span>連擊</span>
+        <strong id="combo">0</strong>
+      </div>
+      <div class="score-card">
+        <span>時間</span>
+        <strong><span id="time">60</span> 秒</strong>
+      </div>
+      <div class="score-card">
+        <span>最高分</span>
+        <strong id="best">0</strong>
+      </div>
+    </section>
+
+    <p id="message" class="message" aria-live="polite">
+      按下開始遊戲，看看你能得到幾分！
+    </p>
+
+    <section class="game-board" aria-label="打地鼠遊戲區">
+      <button class="hole" type="button" data-hole="0" aria-label="地鼠洞 1">
+        <img class="mole-image" src="assets/mole_12_retracted.png" alt="">
+      </button>
+      <button class="hole" type="button" data-hole="1" aria-label="地鼠洞 2">
+        <img class="mole-image" src="assets/mole_12_retracted.png" alt="">
+      </button>
+      <button class="hole" type="button" data-hole="2" aria-label="地鼠洞 3">
+        <img class="mole-image" src="assets/mole_12_retracted.png" alt="">
+      </button>
+      <button class="hole" type="button" data-hole="3" aria-label="地鼠洞 4">
+        <img class="mole-image" src="assets/mole_12_retracted.png" alt="">
+      </button>
+      <button class="hole" type="button" data-hole="4" aria-label="地鼠洞 5">
+        <img class="mole-image" src="assets/mole_12_retracted.png" alt="">
+      </button>
+      <button class="hole" type="button" data-hole="5" aria-label="地鼠洞 6">
+        <img class="mole-image" src="assets/mole_12_retracted.png" alt="">
+      </button>
+      <button class="hole" type="button" data-hole="6" aria-label="地鼠洞 7">
+        <img class="mole-image" src="assets/mole_12_retracted.png" alt="">
+      </button>
+      <button class="hole" type="button" data-hole="7" aria-label="地鼠洞 8">
+        <img class="mole-image" src="assets/mole_12_retracted.png" alt="">
+      </button>
+      <button class="hole" type="button" data-hole="8" aria-label="地鼠洞 9">
+        <img class="mole-image" src="assets/mole_12_retracted.png" alt="">
+      </button>
+    </section>
+
+    <div class="controls">
+      <button id="start-button" class="main-button" type="button">
+        開始遊戲
+      </button>
+      <button id="restart-button" class="secondary-button" type="button">
+        重新開始
+      </button>
+    </div>
+
+    <p class="help-text">看到地鼠冒出來，就點一下牠！</p>
+  </main>
+</body>
+</html>
